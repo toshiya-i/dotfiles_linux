@@ -1,0 +1,39 @@
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+  set laststatus=2
+  let g:lightline = {
+    \ 'colorscheme': 'wombat'
+    \ }
+'''
+
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+  let g:NERDTreeShowBookmarks=1
+  let g:NERDTreeShowHidden=1
+  let g:NERDTreeDirArrowExpandable='>'
+  let g:NERDTreeDirArrowCollapsible='V'
+  nnoremap <Space>n :<C-u>NERDTreeToggle<CR>
+  au MyAutoCmd VimEnter * NERDTree
+  au MyAutoCmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+'''
+
+# language
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+# colorscheme
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+hook_add = '''
+  set background=dark
+  au MyAutoCmd VimEnter * nested colorscheme solarized
+'''

@@ -1,0 +1,89 @@
+"dein Scripts-----------------------------
+
+" reset augroup
+augroup MyAutoCmd
+  autocmd!
+augroup END
+
+let s:dein_dir = expand('~/.vim/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+" Required:
+execute 'set runtimepath+=' . fnamemodify(s:dein_repo_dir, ':p')
+
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+
+  let s:toml      = '~/.vim/dein.toml'
+  "let s:lazy_toml = g:rc_dir . '~/.vim/dein_lazy.toml'
+
+  call dein#load_toml(s:toml,      {'lazy': 0})
+  "call dein#load_toml(s:lazy_toml, {'lazy': 1})
+
+  call dein#end()
+  call dein#save_state()
+endif
+
+if dein#check_install()
+  call dein#install()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+"End dein Scripts-------------------------
+
+set number
+set relativenumber
+
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+set autoindent
+set smartindent
+
+set incsearch
+set ignorecase
+set smartcase
+set hlsearch
+nnoremap <silent><Esc><Esc> :<C-u>noh<CR>
+
+set cursorline
+
+set whichwrap=b,s,h,l,<,>,[,],~
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
+nnoremap <down> gj
+nnoremap <up> gk
+
+set list
+set listchars=tab:>.
+
+set viminfo+=n~/.vim/tmp/viminfo
+
+set backup
+set backupdir=~/.vim/tmp/backup
+
+set swapfile
+set directory=~/.vim/tmp/swap
+
+if has('persistent_undo')
+  set undofile
+  set undodir=~/.vim/tmp/undo
+endif
+
+if &term =~ "xterm"
+  let &t_SI .= "\e[?2004h"
+  let &t_EI .= "\e[?2004l"
+  let &pastetoggle = "\e[201~"
+
+  function XTermPasteBegin(ret)
+    set paste
+    return a:ret
+  endfunction
+
+  inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+endif
