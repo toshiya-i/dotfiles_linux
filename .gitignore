@@ -1,2 +1,8 @@
-.vim/dein
-.vim/tmp/viminfo
+/.vim/dein
+/.vim/tmp/backup
+!/.vim/tmp/backup/.gitkeep
+/.vim/tmp/swap
+!/.vim/tmp/swap/.gitkeep
+/.vim/tmp/undo
+!/.vim/tmp/undo/.gitkeep
+/.vim/tmp/viminfo
