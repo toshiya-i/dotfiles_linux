@@ -6,3 +6,4 @@
 /.vim/tmp/undo
 !/.vim/tmp/undo/.gitkeep
 /.vim/tmp/viminfo
+/.vim/vimrc.local
